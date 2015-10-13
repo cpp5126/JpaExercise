@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -22,6 +23,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
     private Object persistence;
+    private Object jpaPerson;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -32,11 +34,11 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         EntityManagerFactory emf;
-        emf = persistence.createEntityManagerFactory("JapaExercisePU");
+        emf = Persistence.createEntityManagerFactory("JapaExercisePU");
         Person dude = new Person();
         dude.setFirstName("Chaitali");
         
-        PeasonJpaController japaPerson = new PersonJpaController(emf);
+        PersonJpaController jpaPerson = new PersonJpaController(emf);
         jpaPerson.create(dude);
     }    
     
